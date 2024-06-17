@@ -1,4 +1,4 @@
-# Gordex react app migration
+# Gordex React App
 
 ## How to start:
 

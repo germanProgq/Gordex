@@ -2,6 +2,8 @@
 
 ## How to start:
 
-  "npm install"
-  "npm run dev"
+```Bash
+  npm install
+  npm run dev
+```
 

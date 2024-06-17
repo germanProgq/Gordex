@@ -1,0 +1,16 @@
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 962">
+<rect id="Rectangle 1331" width="36" height="36" rx="6" fill="url(#paint0_linear_110_8594)" fill-opacity="0.18"/>
+<g id="dash-3 (1)">
+<path id="Oval" d="M18 29.25C24.2132 29.25 29.25 24.2132 29.25 18C29.25 11.7868 24.2132 6.75 18 6.75C11.7868 6.75 6.75 11.7868 6.75 18C6.75 24.2132 11.7868 29.25 18 29.25Z" fill="white"/>
+<path id="Shape" d="M27.3798 24.028H22.9398V18L18.0026 22.8715L13.0654 18V24.028H8.62548H8.4834C10.4725 27.1472 13.9889 29.25 18.0026 29.25C22.0163 29.25 25.5328 27.1822 27.5219 24.028H27.3798Z" fill="#4C4C4C"/>
+<path id="Shape_2" d="M10.7248 21.4615V12.1922L18 19.39L25.2752 12.1922V21.4615H28.7529C29.1433 20.338 29.25 19.1442 29.25 17.8802C29.25 11.7358 24.2106 6.75 18 6.75C11.7894 6.75 6.75 11.7358 6.75 17.8802C6.75 19.1442 6.85767 20.338 7.24805 21.4615H10.7248Z" fill="#FF6B01"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_110_8594" x1="18" y1="23.625" x2="18" y2="24.1875" gradientUnits="userSpaceOnUse">
+<stop offset="0.656251" stop-color="#FF6B01"/>
+<stop offset="0.679689" stop-color="#FF6B01"/>
+</linearGradient>
+</defs>
+</svg>

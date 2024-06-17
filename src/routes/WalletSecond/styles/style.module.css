@@ -1,0 +1,479 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+.wallet {
+  padding-top: 115px;
+  padding-bottom: 120px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.wallet__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wallet__balance {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.wallet__top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.wallet__topTitle {
+  color: var(--dark);
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.9px;
+}
+
+.wallet__itemIcon {
+  width: 40px;
+  height: 40px;
+}
+
+
+
+.time__percent {
+  position: relative;
+  width: 168px;
+  height: 168px;
+}
+
+.time__percent svg {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  transform: rotate(270deg) rotateY(180deg);
+}
+
+.time__percent svg circle {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke-width: 3;
+  stroke: #FFFFFF;
+  transform: translate(13px,13px);
+}
+
+.time__percent svg circle:nth-child(2) {
+  stroke: var(--dark);
+  stroke-dasharray: 440;
+  stroke-dashoffset: calc(440 - (440 * 87) / 100); 
+}
+
+.time__dot {
+  position: absolute;
+  inset: 9px;
+  z-index: 1;
+  transform: rotate(calc(2.6deg * 87));
+}
+
+.time__dot::before {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--dark);
+}
+
+.time__value {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  color: var(--dark);
+  text-align: center;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 13px;
+  letter-spacing: 0.44px;
+  text-transform: uppercase;
+}
+
+.time__text {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  color: var(--dark);
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.55px;
+  white-space: nowrap;
+}
+
+.time__btn {
+  z-index: 2;
+  min-width: 80px;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 74px;
+  background-color: var(--dark);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 7px;
+  padding-right: 9px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 14px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+}
+
+.time__btnIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.wallet__title {
+  position: relative;
+  color: var(--dark);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.9px;
+
+  margin-bottom: 12px;
+}
+
+.wallet__titleDecorated::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background-image: url('../../../../public/images/wallet/chevron-thick.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.wallet__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wallet__itemPrice {
+  color: var(--dark);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  margin-bottom: 8px;
+}
+
+.wallet__item-price span {
+  color: var(--dark);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.wallet__itemRate {
+  border-radius: 4px;
+  background: #45B191;
+  padding: 3px;
+  padding-top: 2px;
+
+  color: #FFF;
+  text-align: center;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  max-width: 50px;
+  height: 16px;
+}
+
+.wallet__transTitle {
+  color: var(--dark);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.7px;
+  margin-bottom: 10px;
+}
+
+.wallet__transAmount {
+  margin-bottom: 28px;
+}
+
+.wallet__transAmountBox {
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+
+  margin-bottom: 12px;
+}
+
+.wallet__transAmountValue {
+  position: relative;
+  padding: 6px 10px;
+  border-radius: 5px;
+  background: var(--dark);
+
+  color: #E4E4E4;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  flex-basis: 164px;
+}
+
+.wallet__transAmountCopy {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.wallet__transAmountBtn {
+  border-radius: 5px;
+  background: var(--dark);
+  padding: 8px;
+  min-height: 30px;
+
+  color: #E4E4E4;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  flex-basis: 242px;
+}
+
+.wallet__transAmountText {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--dark);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  max-width: 400px;
+}
+
+.wallet__transTitle span {
+  font-weight: 700;
+}
+
+.wallet__transAddressValue {
+  position: relative;
+  max-width: 412px;
+  padding: 10px;
+  padding-right: 25px;
+  border-radius: 10px;
+  background: var(--dark);
+
+  color: #E4E4E4;
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.26px;
+  text-transform: uppercase;
+
+  margin-bottom: 10px;
+}
+
+.wallet__transAddressCopy {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.wallet__transAddressText {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  color: var(--dark);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  max-width: 412px;
+}
+
+.wallet__transAddressText + .wallet__transAddressText  {
+  margin-top: 20px;
+}
+
+.wallet__transChevron {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+
+.wallet__transImg {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 27px;
+}
+
+.wallet__referralItems {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 24px 40px;
+  margin-top: 33px;
+}
+
+.wallet__referralItemText {
+  margin-top: 7px;
+
+  color: var(--dark);
+  text-align: center;
+  font-family: "Ubuntu Mono";
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.wallet__referralItemImg {
+  width: 60px;
+  height: 60px;
+}
+
+.wallet__btn {
+  position: relative;
+  max-width: 412px;
+  min-height: 34px;
+  width: 100%;
+  border-radius: 30px 50px 50px 30px;
+  background: var(--dark);
+  padding: 10px;
+  padding-right: 42px;
+
+  color: #E4E4E4;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500; 
+  line-height: normal;
+  letter-spacing: 0.6px;
+}
+
+.wallet__btnIcon {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+}
+
+@media(max-width: 1200px) {
+  .wallet__referral {
+    display: none;
+  }
+
+  .wallet__wrapper {
+    flex-direction: row-reverse;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+@media(max-width: 768px) {
+
+  .wallet__wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .wallet__balance {
+    flex-direction: row;
+  }
+
+  .wallet__transChevron {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .wallet__title {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .wallet__transAmountText, .wallet__transAddressText {
+    font-size: 12px;
+  }
+
+  .wallet__transAmountText img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .wallet__transAddressText img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .time {
+    margin-top: -20px;
+  }
+
+  .wallet__transAddressValue {
+    font-size: 12px;
+  }
+}
+
+
+@media(max-width: 500px) {
+
+  .time {
+    overflow: hidden;
+  }
+
+}
+
+@media(max-width: 380px) {
+  .wallet__balance {
+    gap: 10px;
+  }
+}

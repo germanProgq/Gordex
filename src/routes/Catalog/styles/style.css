@@ -1,0 +1,188 @@
+main.container {
+    padding-top: 68px;
+    position: relative;
+}
+
+/* PRODUCTS */
+
+.products__inner {
+    padding: 0 10px;
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 62px;
+}
+
+/* .products__main {
+    height: 100%;
+    width: 100%;
+} */
+
+
+.products__filter-grid__container {
+    display: flex;
+    justify-content: space-between;    
+}
+
+.products__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 210px);
+    gap: 30px 36px;
+    align-self: start;
+    margin-bottom: 100px;
+}
+
+@media (max-width: 1140px) {
+    .products__filter-grid__container {
+        justify-content: space-between;
+    }
+
+    .products__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 960px) {
+    .products__grid {
+        margin-top: 88px;
+    }
+    .products__grid > * {
+        justify-self: center;
+    }
+}
+
+@media (max-width: 720px) {
+    .products__grid {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+  
+} 
+
+/* ---------------------- */
+
+
+
+.discounts__card {
+    /* display: block; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    min-height: 290px;
+    width: 180px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px 0px rgba(33, 33, 33, 0.20);
+}
+.discounts__card-top {
+    position: relative;
+    padding: 0px;
+}
+
+.discounts__card-img {
+    margin: 0 auto;
+    display: block;
+    transition: all 0.1s;
+}
+
+.discounts__card-overlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 33px;
+    padding: 5px 5px 0px 5px;
+    background: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.discounts__card-text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.05em;
+    color: var(--dark);
+
+}
+
+.discounts__card-bottom {
+    padding: 10px 5px 5px 5px;
+}
+
+.discounts__card-location {
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 11px;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+.discounts__card-prices {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+.discounts__card-prices-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.discounts__card-price {
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 20px;
+    color: var(--dark);
+}
+.discounts__card-price-icon {
+    width: 23px;
+    height: 23px;
+}
+.discounts__card-rate {
+    color: #212121;
+    text-align: center;
+    font-family: "Days One";
+    font-style: normal;
+    line-height: 11px; 
+    letter-spacing: 0.7px;
+    font-weight: 400;
+    font-size: 14px;
+
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.50);
+}
+
+.discounts__card-favorite {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.50);
+}
+

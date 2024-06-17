@@ -1,0 +1,185 @@
+.footer__main {
+    display: flex;
+    justify-content: space-between;
+    font-family: "ubuntu";
+    padding: 0 20px;
+}
+
+.footer__main-left {
+    display: flex;
+}
+
+.footer__buyers {
+    min-width: 190px;
+    /* padding-left: 20px; */
+}
+
+.footer__title {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 15px;
+    letter-spacing: 0.05em;
+    color: var(--dark);
+    margin-bottom: 20px;
+}
+
+.footer__list--bordered {
+    position: relative;
+}
+
+.footer__list--bordered::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background-color: var(--dark);
+    border-radius: 10px;
+}
+
+.footer__list-item + .footer__list-item {
+    margin-top: 10px;
+}
+.footer__list-link {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px;
+    letter-spacing: 0.05em;
+    color: var(--dark);
+}
+.footer__brands {
+    padding-left: 40px;
+    padding-top: 40px;
+    min-width: 242px;
+}
+.footer__partners {
+    padding-left: 40px;
+}
+
+.footer__main-right {
+    display: flex;
+    gap: 100px;
+    padding-left: 5px;
+}
+
+.footer__app-link + .footer__app-link {
+    margin-top: 10px;
+    display: block;
+}
+
+.footer__app-img {
+    min-width: 140px;
+    width: 140px;
+    height: 40px;
+}
+
+.footer__logo-img {
+    min-width: 243px;
+    min-height: 44px;
+}
+
+.footer__logo-text {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: right;
+    letter-spacing: 0.05em;
+    color: var(--dark);
+    margin-top: 10px;
+}
+
+.footer__copy {
+    padding: 36px 20px 0px 20px;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.footer__copy-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+    color: var(--dark);
+}
+
+.footer__copy-text--underlined {
+    text-decoration: underline;
+}
+
+
+@media(max-width: 1100px) {
+    .footer__main-right {
+        gap: 0;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        align-items: end;
+        height: 100%;
+    }
+
+    .footer__logo {
+        margin-bottom: 50px; 
+    }
+
+    .footer__app > .footer__title {
+        text-align: end;
+    }
+}
+
+@media(max-width: 860px) {
+    .footer__main-left {
+        flex-direction: column;
+        width: 35%;
+    }
+
+    .footer__logo {
+        min-width: 0;
+    }
+
+    .footer__logo-img {
+        min-width: 190px;
+        min-height: 0;
+    }
+
+    .footer__list {
+        margin-bottom: 7px;
+    }
+
+    .footer__list--bordered::after {
+        display: none;
+    }
+
+    .footer__brands {
+        padding: 0;
+        margin-bottom: 35px;
+    }
+    .footer__partners {
+        padding: 0;
+    }
+
+
+
+}
+
+@media (max-width: 460px) {
+    
+    .footer__buyers {
+        width: 100%;
+    }
+
+    .footer__list {
+        width: 100%;
+    }
+
+    .footer__copy {
+        gap: 0;
+    }
+
+    .footer__logo-img {
+        width: 110px;
+        min-height: 0;
+    }
+
+}

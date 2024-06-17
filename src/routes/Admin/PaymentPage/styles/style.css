@@ -1,0 +1,200 @@
+.active {
+  font-weight: 600 !important;
+  color: #212121 !important;
+}
+
+.activeIcon {
+  fill: #212121;
+}
+
+.payment__container {
+  padding: 50px;
+  font-family: 'Inter', sans-serif;
+}
+
+.payment__mail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+  margin-bottom: 10px;
+}
+
+.payment__mail-item {
+  border-radius: 10px;
+  background: #FFF;
+  padding: 15px;
+}
+
+.payment__mail-title {
+  color: #2A2D34;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 15px;
+}
+
+.payment__mail-form {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.payment__mail-input {
+  border-radius: 4px;
+  border: 1px solid #72838C;
+  padding: 9px;
+  height: 29px;
+
+  color: #212121;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.5px;
+
+  flex-basis: 278px;
+}
+
+.payment__mail-input::placeholder {
+  color: #212121;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.5px;
+}
+
+.payment__mail-submit {
+  color: #2A2D34;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.5px;
+}
+
+.payment__date {
+  padding: 12px 15px;
+  border-radius: 10px;
+  background: #FFF;
+  display: flex;
+  align-items: center;
+  gap: 43px;
+
+  margin-bottom: 36px;
+}
+
+.payment__date-title {
+  color: #2A2D34;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.payment__date-items {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.payment__date-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.payment__date-value {
+  color: #212121;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.5px;
+}
+
+.payment__main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+
+.payment__title {
+  color: #2A2D34;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 15px;
+}
+
+.payment__crypto-item {
+  padding: 15px;
+  padding-top: 11px;
+  border-radius: 10px;
+  background: #FFF;
+}
+
+.payment__crypto-item + .payment__crypto-item {
+  margin-top: 10px;
+}
+
+.payment__crypto-title {
+  color: #72838C;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.payment__crypto-form {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.payment__crypto-form + .payment__crypto-form {
+  margin-top: 5px;
+}
+
+.payment__crypto-input {
+  flex-basis: 360px;
+  height: 26px;
+  border-radius: 4px;
+  border: 1px solid #72838C;
+  padding: 3px;
+  padding-left: 20px;
+
+  color: #2A2D34;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; 
+  letter-spacing: 0.32px;
+}
+
+.payment__crypto-input::placeholder {
+  color: #2A2D34;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; 
+  letter-spacing: 0.32px;
+}

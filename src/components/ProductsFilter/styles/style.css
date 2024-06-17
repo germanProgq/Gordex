@@ -1,0 +1,112 @@
+
+.products__list {
+    font-family: 'Ubuntu', sans-serif;
+    width: fit-content;
+    min-width: 220px;
+}
+
+@media (max-width: 960px) {
+    .products__list {
+        min-width: 170px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+
+
+.products__list-item + .products__list-item {
+    margin-top: 20px;
+}
+.products__list-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 170px;
+}
+.products__list-chevron {
+    transition: all 0.3s;
+}
+.products__list-btn.active .products__list-chevron {
+    rotate: 180deg;
+}
+.products__list-panel {
+    margin-top: 10px;
+    background: #FFFFFF;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    max-height: 0;
+    transition: all 0.3s;
+    overflow: hidden;
+}
+
+
+.products__sublist {
+    padding: 4px 11px;
+}
+.products__sublist-item + .products__sublist-item {
+    margin-top: 2px;
+}
+.products__sublist-link {
+    position: relative;
+    padding-left: 11px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 20px;
+    color: var(--dark);
+}
+.products__sublist-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    background-color: var(--dark);
+    border-radius: 50%;
+}
+.products__list-range + .products__list-range {
+    margin-top: 5px;
+}
+.products__list-range {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.products__list-range-img {
+    opacity: 0.75;
+}
+.products__list-range-box {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+.products__list-range-input {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 20px;
+    background: #FFFFFF;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    width: 66px;
+    height: 23px;
+    padding-left: 10px;
+}
+.products__list-range-input::placeholder {
+    color: #ADADAD;
+}
+.products__list-range-decor {
+    width: 10px;
+    height: 2px;
+    background-color: var(--dark);
+}
+.products__list-panel--transparent {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+}

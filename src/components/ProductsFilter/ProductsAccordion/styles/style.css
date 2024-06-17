@@ -1,0 +1,25 @@
+.accordion-option-list {
+    list-style-type: disc;
+    
+}
+
+.accordion-option-list > * {
+    list-style-type: disc;
+    padding: 8px 16px 8px 0px;
+    text-align: left;
+    text-indent: -2px;
+}
+
+
+.products-filter__icon {
+    position: absolute;
+    width: 20px;
+    left: -0px;
+}
+
+@media (max-width: 960px) {
+    .products-filter__icon {
+        left: -8px;
+        top: 9px;
+    }
+}

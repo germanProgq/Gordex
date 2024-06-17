@@ -1,0 +1,23 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 974">
+<rect id="Rectangle 1335" width="24" height="24" rx="6" fill="#161C31" fill-opacity="0.15"/>
+<g id="Group">
+<path id="Shape" d="M11.9901 4.5L11.8936 4.82811V14.3491L11.9901 14.4454L16.4096 11.8331L11.9901 4.5Z" fill="#62688F"/>
+<path id="Shape_2" d="M11.9908 4.5L7.57129 11.8331L11.9908 14.4455V9.82427V4.5Z" fill="url(#paint0_linear_574_4192)"/>
+<path id="Shape_3" d="M11.989 15.8838L11.9346 15.9501V19.3416L11.989 19.5005L16.4111 13.2727L11.989 15.8838Z" fill="#62688F"/>
+<path id="Shape_4" d="M11.9908 19.5006V15.8838L7.57129 13.2727L11.9908 19.5006Z" fill="url(#paint1_linear_574_4192)"/>
+<path id="Shape_5" d="M11.9893 14.4448L16.4087 11.8325L11.9893 9.82373V14.4448Z" fill="#454A75"/>
+<path id="Shape_6" d="M7.57129 11.8325L11.9907 14.4449V9.82373L7.57129 11.8325Z" fill="#62688F"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_574_4192" x1="9.78105" y1="4.5" x2="9.78105" y2="14.4455" gradientUnits="userSpaceOnUse">
+<stop stop-color="#8A91B3"/>
+<stop offset="1" stop-color="#8A91B3"/>
+</linearGradient>
+<linearGradient id="paint1_linear_574_4192" x1="9.78105" y1="13.2727" x2="9.78105" y2="19.5006" gradientUnits="userSpaceOnUse">
+<stop stop-color="#8A92B2"/>
+<stop offset="1" stop-color="#8A91B3"/>
+</linearGradient>
+</defs>
+</svg>

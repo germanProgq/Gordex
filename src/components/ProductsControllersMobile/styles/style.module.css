@@ -1,0 +1,126 @@
+.controllers__container {
+    position: absolute;
+    z-index: 2;
+    top: 88px;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    background: rgba(236, 236, 236, 0.8);
+    backdrop-filter: blur(6px);
+    padding-bottom: 8px;
+}
+
+.controllers__container > * {
+    background-color: transparent !important;
+}
+
+
+/* PRODUCTS-FILTER ACCORDION */
+
+
+
+.productsFilter__accordion {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    background: transparent;
+}
+
+.productsFilter__accordionButton {
+    width: 100%; 
+    height: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-bottom: 4px;
+}
+
+.productsFilter__accordionHeader {
+    height: 36px;
+    min-height: 0 !important;
+    position: relative;
+    text-align: center;
+    background: transparent;
+    width: 170px;
+    font-weight: 400;
+    color: black;
+}
+.productsFilter__accordionHeader > div {
+    justify-content: center
+
+}
+
+.productsFilter__accordionHeader__img {
+    position: absolute;
+    left: -8px;
+    width: 20px;
+}
+
+.productsFilter__accordionContent {
+    font-size: 14px;
+    padding: 0 !important;
+}
+
+
+
+
+/* CATEGORIES ACCORDION */
+
+.categories__accordion {
+    width: 50%;
+    z-index: 4;
+    background: transparent;
+}
+.categories__accordion::before {
+    display: none;
+}
+
+.categories__accordionButton {
+    width: 100%;
+    height: 36px;
+    margin-bottom: 4px;
+}
+
+.categories__accordionHeader {
+    position: relative;
+    min-height: 0 !important;
+    height: 36px !important;
+    width: 170px;
+
+    background: #212121 !important;
+    color: #F6D456 !important;
+
+    border-radius: 15px !important;
+    
+    font-weight: 400;
+    font-size: 14px;
+    
+    padding: 0 9px;
+}
+
+.categories__accordionHeader > div:first-child {
+    justify-content: end;
+    margin-right: 25px;
+}
+
+.categories__accordionImg {
+    position: absolute;
+    left: 13px;
+    width: 20px;
+    top: 8px;
+}
+
+
+.categories__accordionList {
+    width: fit-content;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+
+

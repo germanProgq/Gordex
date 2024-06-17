@@ -1,0 +1,16 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 973">
+<rect id="Rectangle 1331" width="40" height="40" rx="6" fill="url(#paint0_linear_124_11740)" fill-opacity="0.18"/>
+<g id="dash-3 (1)">
+<path id="Oval" d="M20 32.5C26.9036 32.5 32.5 26.9036 32.5 20C32.5 13.0964 26.9036 7.5 20 7.5C13.0964 7.5 7.5 13.0964 7.5 20C7.5 26.9036 13.0964 32.5 20 32.5Z" fill="white"/>
+<path id="Shape" d="M30.4237 26.6978H25.4905V20L20.0047 25.4128L14.5189 20V26.6978H9.5856H9.42773C11.6378 30.1636 15.545 32.5 20.0047 32.5C24.4643 32.5 28.3715 30.2025 30.5816 26.6978H30.4237Z" fill="#4C4C4C"/>
+<path id="Shape_2" d="M11.9164 23.8462V13.5469L20 21.5444L28.0836 13.5469V23.8462H31.9477C32.3815 22.5978 32.5 21.2713 32.5 19.8669C32.5 13.0397 26.9006 7.5 20 7.5C13.0994 7.5 7.5 13.0397 7.5 19.8669C7.5 21.2713 7.61963 22.5978 8.05339 23.8462H11.9164Z" fill="#FF6B01"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_124_11740" x1="20" y1="26.25" x2="20" y2="26.875" gradientUnits="userSpaceOnUse">
+<stop offset="0.656251" stop-color="#FF6B01"/>
+<stop offset="0.679689" stop-color="#FF6B01"/>
+</linearGradient>
+</defs>
+</svg>

@@ -1,0 +1,238 @@
+.login-container {
+    padding: 20px 22px;
+    background-color: white;
+    border-radius: 7px;
+    min-height: 300px;
+}
+
+.login__footer-item {
+    background-color: white;
+    padding: 15px 25px;
+
+}
+
+.login__footer-item.upper {
+    border-radius: 7px 7px 0 0;
+}
+
+.login__footer-item.lower {
+    border-radius: 0 0 7px 7px;
+}
+
+.login__header {
+    width: 100%;
+    height: 45px;
+    background-color: #f6d35685;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.login__header > div {
+    width: 38%;
+    max-width: 370px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-content.MuiContainer-root {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-content {
+    display: flex;
+    align-items: start;
+    height: 100%;
+}
+.main-content__buttons.MuiButton-root {
+    text-transform: none;
+    font-weight: 400;
+    position: relative;
+    
+}
+
+.main-content__buttons-icon.right {
+    margin-left: 5px;
+    margin-bottom: 1px;
+}
+
+.login-content {
+    display: grid;
+    grid-template-columns: 325px 325px;
+    column-gap: 10px;;
+}
+.login__content-item.MuiStack-root {
+    display: grid;
+    grid-template-rows: 1fr 175px;
+    row-gap: 20px;
+}
+
+.login__connect-to-wallet__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login__connect-to-wallet__btn.MuiButton-root {
+    position: relative;
+    background-color: #212121;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 400;
+    height: 40px;
+
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+}
+.login__connect-to-wallet__btn.MuiButton-root::before {
+    content: '';
+    background-image: url(../../../../public/images/login/empty-wallet.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    left: 13px;
+    top: 7px;
+    width: 24px;
+    height: 24px;   
+}
+
+.login__connect-to-wallet__btn.MuiButton-root:hover {
+    background-color: #212121;
+}
+
+.connect-to-wallet__checkbox__label > .MuiFormControlLabel-label {
+    font-size: 10px;
+    font-weight: 400;
+    color: grey;
+    user-select: none;
+
+}
+
+.connect-to-wallet__icon-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+}
+
+
+
+
+
+.login-window__switch-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-window__switch-buttons-item.MuiButton-root {
+    text-transform: none;
+    color: rgba(128, 128, 128, 0.8);
+    font-weight: 400;
+    font-size: 15px;
+    border-radius: 0;
+    padding: 0; 
+    border-bottom: 2px solid rgba(128, 128, 128, 0.8);
+}
+
+.login-window__switch-buttons-item.MuiButton-root.active {
+    color: #212121;
+    border-bottom: 2px solid #212121;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+
+#sign-up {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.sign-up__input  {
+    position: relative;
+    height: 30px;
+    padding-left: 30px !important;
+    margin-bottom: 7px;
+}
+
+.sign-up__input:last-child {
+    margin: 0;
+}
+
+.sign-up__input-icon {
+    position: absolute;
+    left: 5px;
+    width: 19px;
+    height: 19px;
+}
+
+.sign-up__remember-password {
+    user-select: none;
+}
+.sign-up__remember-password > .MuiFormControlLabel-label {
+    font-size: 12px;
+    color: grey;
+}
+
+.sign-up__remember-password > .MuiCheckbox-root {
+    width: 40px;
+    height: 100%;
+}
+
+
+
+#continue__button {
+    background-color: #212121;
+    color: white;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 12px;
+    min-width: 100px;
+    height: 30px;
+}
+
+.login__login-window__footer.MuiStack-root {
+    display: grid;
+    grid-template-rows: minmax(98px, 1fr) minmax(98px, 1fr);
+    row-gap: 10px;
+    position: relative;
+}
+
+.login__login-window__footer > * {
+    padding: 17px 30px 17px 75px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__connect-to-wallet__footer.MuiStack-root {
+    display: grid;
+    grid-template-rows: minmax(98px, 1fr) minmax(98px, 1fr);
+    row-gap: 10px;
+    position: relative;
+}
+.login__connect-to-wallet__footer > * {
+    padding: 17px 30px 17px 75px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__footer-item__icon {
+    position: absolute;
+    left: 25px;
+    width: 25px;
+    height: 25px;
+
+}

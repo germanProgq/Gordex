@@ -1,0 +1,38 @@
+:root {
+    --white: #FFFFFF
+    --bg-color: #ECECEC;
+    --yellow: #F6D456;
+    --dark: #212121;
+}
+
+.container {
+    max-width: 1220px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #ECECEC;
+    font-family: 'Ubuntu Mono';
+    color: #212121;
+}
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+  
+.main {
+    flex: 1 1 auto;
+}

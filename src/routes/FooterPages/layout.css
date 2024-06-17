@@ -1,0 +1,27 @@
+.info {
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    
+}
+
+.dot__list > * {
+    list-style-type: disc;
+
+}
+
+.dot__list {
+    padding-left: 18px;
+}
+
+
+.list__numbers {
+    padding-left: 22px;
+}
+
+.list__numbers > * {
+    list-style-type: decimal;
+}

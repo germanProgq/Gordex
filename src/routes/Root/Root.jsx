@@ -1,7 +1,9 @@
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import ProductCard from "../../components/ProductCard/ProductCard.jsx";
-
+import { useEffect } from 'react';
+import { CreateToken } from '../../apiService.js';
+    
 import 'swiper/css';
 import style from "./styles/style.module.css";
 import * as img from './styles/img.js'
@@ -10,6 +12,10 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import { FreeMode } from 'swiper/modules';
 
 function Root() {
+
+    useEffect(() => {
+        const token = CreateToken();
+    }, [])
 
     // Parters section: deleted container className
 

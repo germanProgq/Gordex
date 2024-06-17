@@ -6,17 +6,30 @@ import * as img from "./styles/img.js"
 import "./styles/style.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { CreateCaptcha } from "../../apiService.js";
 import { useEffect } from "react";
+import { AuthAccReq } from "../../apiService.js";
 
 function Login() {
     const [loginForm, setLoginForm] = useState("signUp");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState('');
+    const [repeatPass, setRepeatPass] = useState('');
+    const [captcha, setCaptcha] = useState("");
     const navigate = useNavigate();
 
-    useEffect(()=> {
-        console.log(CreateCaptcha())
+    const SubmitForm = () => {
+        if (loginForm === 'signUp') {
+            if (!captcha) {
+                throw Error
+            }
+            AuthAccReq(captcha, email, password)
+            
 
-    }, [])
+        }
+        else if (loginForm === "signIn"){
+
+        }
+    }
     
     return (
         <>
@@ -115,13 +128,15 @@ function Login() {
                                 loginForm === "signUp" ?
                                     <form id="sign-up">
                                         <OutlinedInput 
+                                            onChange={(e) => {setEmail(e.target.value)}}
                                             className="sign-up__input"
                                             fullWidth 
                                             placeholder="E-mail"
                                             type="email"
                                             startAdornment={<img className="sign-up__input-icon" src={img.userIcon} alt="" />}
                                             />
-                                        <OutlinedInput 
+                                        <OutlinedInput
+                                            onChange={(e) => {setPassword(e.target.value);}} 
                                             className="sign-up__input"
                                             fullWidth 
                                             placeholder="Password"
@@ -129,6 +144,7 @@ function Login() {
                                             startAdornment={<img className="sign-up__input-icon" src={img.keyIcon} alt="" />}
                                             />
                                         <OutlinedInput 
+                                            onChange={(e) => {setRepeatPass(e.target.value)}}
                                             className="sign-up__input"
                                             fullWidth 
                                             placeholder="Repeat password"
@@ -151,11 +167,14 @@ function Login() {
                                         <Button
                                             disableElevation
                                             id="continue__button"
+                                            type="submit"
+                                            onClick={() => SubmitForm()}
                                         >Continue</Button>
                                     </form>
                                 :
                                     <form id="sign-in">
                                         <OutlinedInput 
+                                            onChange={(e) => {setEmail(e.target.value)}}
                                             className="sign-up__input"
                                             fullWidth 
                                             placeholder="E-mail"
@@ -163,6 +182,7 @@ function Login() {
                                             startAdornment={<img className="sign-up__input-icon" src={img.userIcon} alt="" />}
                                             />
                                         <OutlinedInput 
+                                            onChange={(e) => {setPassword(e.target.value)}}
                                             className="sign-up__input"
                                             fullWidth 
                                             placeholder="Password"
@@ -184,6 +204,8 @@ function Login() {
                                         <Button
                                             disableElevation
                                             id="continue__button"
+                                            type="submit"
+                                            onClick={() => SubmitForm()}
                                         >Continue</Button>
                                     </form>
                             }

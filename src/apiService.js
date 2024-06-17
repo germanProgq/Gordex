@@ -1,3 +1,4 @@
+import { CategorySharp } from '@mui/icons-material';
 import axios from  'axios'
 
 //Used Functions
@@ -17,31 +18,31 @@ const createCookieHeader = (token) => {
 export const BasketNewItemRq = async () => {
     const result = await api.post(`/api/v1/user/basket/add`);
 
-    return result.data;
+    return JSON.parse(result.data);
 };
 
 export const BasketGetItemRq = async () => {
     const result = await api.post(`/api/v1/user/basket/get`);
 
-    return result.data;
+    return JSON.parse(result.data);
 };
 
 export const BasketRemoveItemRq = async () => {
     const result = await api.post(`/api/v1/basket/remove`);
 
-    return result.data;
+    return JSON.parse(result.data);
 };
 
 export const XChangeHistory = async () => {
     const result = await api.get('/api/v1/exchange-rates/history');
 
-    return result.data;
+    return JSON.parse(result.data);
 };
 
 export const GetAdminPage = async (token) => {
     const result = await api.get(`/api/v1/admin/access/${token}`);
 
-    return result.data;
+    return JSON.parse(result.data);
 };
 
 export const GetCardData = async (cc) => {
@@ -51,7 +52,7 @@ export const GetCardData = async (cc) => {
 
     const result = await api.get('/api/v1/payment/card_data', data);
 
-    return result.data;
+    return JSON.parse(result.data);
 };
 
 export const SearchProducts = async(query) => {
@@ -61,7 +62,7 @@ export const SearchProducts = async(query) => {
 
     const response = await api.get('/api/v1/search', data);
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const AdminMetric = async (token) => {
@@ -69,7 +70,7 @@ export const AdminMetric = async (token) => {
 
     const result = await api.get("/api/v1/search", cookie);
 
-    return result.data;
+    return JSON.parse(result.data);
 };
 
 export const ProfileInfo = async(token) => {
@@ -77,7 +78,7 @@ export const ProfileInfo = async(token) => {
 
     const response = await api.post("/api/v1/profile/info", cookie);
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const UpdateCountryProfile = async (token, info) => {
@@ -94,7 +95,7 @@ export const UpdateCountryProfile = async (token, info) => {
       }
     );
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const GetCurrenciesProfile = async (token) => {
@@ -105,10 +106,10 @@ export const GetCurrenciesProfile = async (token) => {
         headers: cookie,
         });
 
-    return result.data;
+    return JSON.parse(result.data);
 };
 
-export const UpdateEmailForm = async (token, update) => {
+export const UpdateEmailForm = async (token, update) => {   
     const cookie = `token=${token}`;
 
     const result = await api.put('/api/v1/profile/update/email',
@@ -122,7 +123,7 @@ export const UpdateEmailForm = async (token, update) => {
         },
     });
 
-    return result.data;
+    return JSON.parse(result.data);
 };
 
 
@@ -132,9 +133,14 @@ export const UpdateEmailForm = async (token, update) => {
 
 //Token
 export const CreateToken = async () => {
+    try {
     const response = await api.get(`/api/v1/token/create`);
 
-    return response.data;
+    return JSON.parse(response).token;  
+    }
+    catch(x) {
+        console.error("Error", x)
+    }
 };
 
 export const ValidateToken = async (token) => {
@@ -145,7 +151,7 @@ export const ValidateToken = async (token) => {
         }
     );
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 
@@ -159,7 +165,7 @@ export const CreateCaptcha = async (token) => {
         }
     );
     
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const RefreshCaptcha = async (token) => {
@@ -171,7 +177,7 @@ export const RefreshCaptcha = async (token) => {
         }
     );
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const GetCaptchaImage = async (token) => {
@@ -183,7 +189,7 @@ export const GetCaptchaImage = async (token) => {
         }
     );
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const GetCaptchaData = async (token) => {
@@ -195,7 +201,7 @@ export const GetCaptchaData = async (token) => {
         }
     );
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 
@@ -217,7 +223,7 @@ export const GetProductList = async (catalog, category, product_id, token) => {
     headers: header,
     })
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const GetProductData = async (token, product_id) => {
@@ -228,7 +234,7 @@ export const GetProductData = async (token, product_id) => {
         headers: header,
     })
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const ChangeProductInfo = async (usd = null, usdt = null, btc = null, euro = null, title = "", location = "", item_type = null, discount = null,
@@ -271,7 +277,7 @@ export const ChangeProductInfo = async (usd = null, usdt = null, btc = null, eur
     };
     const response = await api.post(`/api/v1/admin/product/info/add`, data);
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const CreateNewProduct = async (usd = null, usdt = null, btc = null, euro = null, title = "", location = "", item_type = null, discount = null,
@@ -314,13 +320,13 @@ export const CreateNewProduct = async (usd = null, usdt = null, btc = null, euro
     };
     const response = await api.post(`/api/v1/admin/product/new`, data);
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const GetProductFile = async (product_id, file_id) => {
     const response = await api.get(`/api/v1/product/${product_id}/${file_id}/get`);
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const AdminFileUpload_Product = async (product_id, file) => {
@@ -337,7 +343,7 @@ export const AdminFileUpload_Product = async (product_id, file) => {
         }
     });
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const GetProductCategories = async (catalog) => {
@@ -346,13 +352,13 @@ export const GetProductCategories = async (catalog) => {
     };
     const response = await api.get(`/api/v1/categories/get`, data);
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const GetCatalogsWithCategories = async () => {
     const response = await api.get(`/api/v1/catalog/get`);
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 
@@ -378,7 +384,7 @@ export const AuthAccReq = async (captchaData, email, password, token) => {
         }
     );
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const RegisterAccount = async (email, password, captcha, token) => {
@@ -396,7 +402,7 @@ export const RegisterAccount = async (email, password, captcha, token) => {
           'Cookie': `token=${token}`
         }
     });
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 
@@ -411,7 +417,7 @@ export const GetFavProducts = async (token) => {
         }
     );
 
-    return response.data;
+    return JSON.parse(response.data);
 };
 
 export const DeleteFavProducts = async (product_id, token) => {
@@ -431,7 +437,7 @@ export const DeleteFavProducts = async (product_id, token) => {
         }
     );
 
-    return response.data;
+    return JSON.parse(response.data);
 
 };
 
@@ -452,5 +458,5 @@ export const AddFavProduct = async (product_id, token) => {
         }
     );
 
-    return response.data;
+    return JSON.parse(response.data);
 };

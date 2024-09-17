@@ -1,15 +1,30 @@
-import { CategorySharp } from '@mui/icons-material';
+import { CategorySharp, Cookie } from '@mui/icons-material';
 import axios from  'axios'
+import Cookies from  'js-cookie'
 
 //Used Functions
 const api = axios.create({
-    baseURL: "http://91.103.253.183:8000",
+    baseURL: "http://185.174.136.47:8080",
 });
 
 const createCookieHeader = (token) => {
     return {        
-        'Cookie': `token = ${token}`,
+        'Cookie': `token=${token}`,
     };
+};
+
+const tokenReq = () => {
+    const token = Cookies.get('token')
+
+    if (!token) {
+        throw new Error ("Token is not in cookies")
+    }
+
+    const cookieHeader = createCookieHeader(token)
+
+    return {    
+        withCredentials: true,
+    }
 };
 
 
@@ -65,31 +80,38 @@ export const SearchProducts = async(query) => {
     return JSON.parse(response.data);
 };
 
-export const AdminMetric = async (token) => {
-    const cookie = createCookieHeader(token);
+export const AdminMetric = async () => {
+    const ver = tokenReq();
 
-    const result = await api.get("/api/v1/search", cookie);
+    const result = await api.get("/api/v1/search", ver);
 
     return JSON.parse(result.data);
 };
 
-export const ProfileInfo = async(token) => {
-    cookie = createCookieHeader(token);
+export const ProfileInfo = async() => {
 
-    const response = await api.post("/api/v1/profile/info", cookie);
+    const ver = tokenReq()
+
+    const response = await api.post("/api/v1/profile/info", ver);
 
     return JSON.parse(response.data);
 };
 
-export const UpdateCountryProfile = async (token, info) => {
-    const cookie = `token=${token}`;
+export const UpdateCountryProfile = async (info) => {
+    const token = Cookies.get('token')
+
+    if (!token) {
+        throw new Error ("No token found");
+    }
+
+    const cookie = createCookieHeader(token)
 
     const response = await api.put('/api/v1/profile/update/country',
       info,
       {
         headers: {
           'Content-Type': 'application/json',
-          'Cookie': cookie,
+           cookie,
           'accept': 'application/json',
         }
       }
@@ -135,8 +157,8 @@ export const UpdateEmailForm = async (token, update) => {
 export const CreateToken = async () => {
     try {
     const response = await api.get(`/api/v1/token/create`);
+    Cookies.set('token', response.data.token, { expires: 90, path: '/', secure: false, sameSite: 'Lax' });
 
-    return JSON.parse(response).token;  
     }
     catch(x) {
         console.error("Error", x)
@@ -157,16 +179,15 @@ export const ValidateToken = async (token) => {
 
 
 //Captcha
-export const CreateCaptcha = async (token) => {
-    const cookie = createCookieHeader(token)
-    const response = await api.get(`/api/v1/captcha/create`, 
-        {
-        headers: cookie,
-        }
-    );
-    
-    return JSON.parse(response.data);
-};
+export const CreateCaptcha = async () => {
+    const token = tokenReq()
+    try {
+      const response = await axios.get('/api/v1/captcha/create', token)
+      return response;
+    } catch (error) {
+      console.error('Error creating captcha:', error);
+    }
+  };
 
 export const RefreshCaptcha = async (token) => {
     cookie = createCookieHeader(token)

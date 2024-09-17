@@ -2,7 +2,7 @@ import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import ProductCard from "../../components/ProductCard/ProductCard.jsx";
 import { useEffect } from 'react';
-import { CreateToken } from '../../apiService.js';
+import { CreateCaptcha, CreateToken } from '../../apiService.js';
     
 import 'swiper/css';
 import style from "./styles/style.module.css";
@@ -12,12 +12,29 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import { FreeMode } from 'swiper/modules';
 
 function Root() {
-
     useEffect(() => {
-        const token = CreateToken();
-    }, [])
+        const fetchToken = async () => {
+            try {
+                await CreateToken();
+            } catch (error) {
+                console.error("Error fetching token:", error);
+            }
+        };
 
-    // Parters section: deleted container className
+        const request_captcha = async() => {
+            try {
+                const captcha_html = await CreateCaptcha();
+                console.log(captcha_html)
+                return captcha_html                
+            } catch(error) {
+                console.error("Error creating captcha:", error);
+            }
+        }
+        fetchToken()
+        request_captcha()
+
+
+    }, []);
 
     return (
         <>

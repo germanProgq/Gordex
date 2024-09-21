@@ -6,8 +6,7 @@ import * as img from "./styles/img.js"
 import "./styles/style.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { useEffect } from "react";
-import { AuthAccReq } from "../../apiService.js";
+import { AuthAccReq, CreateCaptcha, RegisterAccount } from "../../token/api.js";
 
 function Login() {
     const [loginForm, setLoginForm] = useState("signUp");
@@ -15,21 +14,62 @@ function Login() {
     const [password, setPassword] = useState('');
     const [repeatPass, setRepeatPass] = useState('');
     const [captcha, setCaptcha] = useState("");
+    const [captchaImageUrl, setCaptchaImageUrl] = useState('');
     const navigate = useNavigate();
 
+    const HandleCaptchaImgReq = async() => {
+        const captcha_img = await CreateCaptcha()
+        return captcha_img
+    };
+
+    const handleCaptcha = async () => {
+        const captcha_img = await HandleCaptchaImgReq();
+        setCaptchaImageUrl(captcha_img);
+
+        setTimeout(async () => {
+            const refreshedCaptchaImg = await RefreshCaptcha();
+            setCaptchaImageUrl(refreshedCaptchaImg);
+        }, 45000);
+    };
+
+
     const SubmitForm = () => {
+
         if (loginForm === 'signUp') {
-            if (!captcha) {
-                throw Error
+            if (repeatPass != password) {
+                console.error("Passwords do not match")
             }
-            AuthAccReq(captcha, email, password)
+            else {
+                handleCaptcha();
+                if (captcha) /*Set captcha params*/ {
+                    RegisterAccount(email, password, captcha);
+                    AuthAccReq(email, password, captcha);
+                }            
+            }
+
             
 
         }
         else if (loginForm === "signIn"){
-
+            handleCaptcha();
+            if (captcha) /*Set captcha params*/ {
+                AuthAccReq(email, password, captcha);
+            }  
         }
     }
+    const captchaContainerStyle = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '80%',
+        zIndex: 1000,
+    };
+
+    const captchaImageStyle = {
+        width: '100%',
+        height: 'auto',
+    };
     
     return (
         <>
@@ -229,6 +269,11 @@ function Login() {
                 className="main-content__buttons"
                 variant="text" 
                 color="inherit">Restore password</Button>
+                {captchaImageUrl && (
+                    <div className="captcha-container" style={captchaContainerStyle}>
+                        <img src={captchaImageUrl} alt="Captcha" style={captchaImageStyle} />
+                    </div>
+                )}
             </Container>
         </>
     )

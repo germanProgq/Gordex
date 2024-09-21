@@ -31,31 +31,31 @@ const tokenReq = () => {
 
 //Default
 export const BasketNewItemRq = async () => {
-    const result = await api.post(`/api/v1/user/basket/add`);
+    const result = await axios.post(`/api/v1/user/basket/add`);
 
     return JSON.parse(result.data);
 };
 
 export const BasketGetItemRq = async () => {
-    const result = await api.post(`/api/v1/user/basket/get`);
+    const result = await axios.post(`/api/v1/user/basket/get`);
 
     return JSON.parse(result.data);
 };
 
 export const BasketRemoveItemRq = async () => {
-    const result = await api.post(`/api/v1/basket/remove`);
+    const result = await axios.post(`/api/v1/basket/remove`);
 
     return JSON.parse(result.data);
 };
 
 export const XChangeHistory = async () => {
-    const result = await api.get('/api/v1/exchange-rates/history');
+    const result = await axios.get('/api/v1/exchange-rates/history');
 
     return JSON.parse(result.data);
 };
 
 export const GetAdminPage = async (token) => {
-    const result = await api.get(`/api/v1/admin/access/${token}`);
+    const result = await axios.get(`/api/v1/admin/access/${token}`);
 
     return JSON.parse(result.data);
 };
@@ -65,7 +65,7 @@ export const GetCardData = async (cc) => {
         cc: cc,
     }
 
-    const result = await api.get('/api/v1/payment/card_data', data);
+    const result = await axios.get('/api/v1/payment/card_data', data);
 
     return JSON.parse(result.data);
 };
@@ -75,15 +75,15 @@ export const SearchProducts = async(query) => {
         query: query,
     };
 
-    const response = await api.get('/api/v1/search', data);
+    const response = await axios.get('/api/v1/search', data);
 
-    return JSON.parse(response.data);
+    return response.data;
 };
 
 export const AdminMetric = async () => {
     const ver = tokenReq();
 
-    const result = await api.get("/api/v1/search", ver);
+    const result = await axios.get("/api/v1/search", ver);
 
     return JSON.parse(result.data);
 };
@@ -92,7 +92,7 @@ export const ProfileInfo = async() => {
 
     const ver = tokenReq()
 
-    const response = await api.post("/api/v1/profile/info", ver);
+    const response = await axios.post("/api/v1/profile/info", ver);
 
     return JSON.parse(response.data);
 };
@@ -106,7 +106,7 @@ export const UpdateCountryProfile = async (info) => {
 
     const cookie = createCookieHeader(token)
 
-    const response = await api.put('/api/v1/profile/update/country',
+    const response = await axios.put('/api/v1/profile/update/country',
       info,
       {
         headers: {
@@ -123,7 +123,7 @@ export const UpdateCountryProfile = async (info) => {
 export const GetCurrenciesProfile = async (token) => {
     const cookie = createCookieHeader(token);
 
-    const result = await api.get('/api/v1/profile/get/currencies',
+    const result = await axios.get('/api/v1/profile/get/currencies',
         {
         headers: cookie,
         });
@@ -134,7 +134,7 @@ export const GetCurrenciesProfile = async (token) => {
 export const UpdateEmailForm = async (token, update) => {   
     const cookie = `token=${token}`;
 
-    const result = await api.put('/api/v1/profile/update/email',
+    const result = await axios.put('/api/v1/profile/update/email',
     update,
     {
         headers:
@@ -156,24 +156,20 @@ export const UpdateEmailForm = async (token, update) => {
 //Token
 export const CreateToken = async () => {
     try {
-    const response = await api.get(`/api/v1/token/create`);
-    Cookies.set('token', response.data.token, { expires: 90, path: '/', secure: false, sameSite: 'Lax' });
-
+        const response = await axios.get(`/api/v1/token/create`);
+        Cookies.set('token', response.data.token, { expires: 90, path: '/', secure: false, sameSite: 'Lax' });
+        return response.data.token;
     }
     catch(x) {
         console.error("Error", x)
     }
 };
 
-export const ValidateToken = async (token) => {
-    cookie = createCookieHeader(token)
-    const response = await api.get(`/api/v1/token/validate`,
-        {
-            headers: cookie,
-        }
-    );
+export const ValidateToken = async () => {
+    const cookie = tokenReq()
+    const response = await axios.get(`/api/v1/token/validate`, cookie);
 
-    return JSON.parse(response.data);
+    return JSON.parse(response.status);
 };
 
 
@@ -183,7 +179,7 @@ export const CreateCaptcha = async () => {
     const token = tokenReq()
     try {
       const response = await axios.get('/api/v1/captcha/create', token)
-      return response;
+      return response.data;
     } catch (error) {
       console.error('Error creating captcha:', error);
     }
@@ -192,7 +188,7 @@ export const CreateCaptcha = async () => {
 export const RefreshCaptcha = async (token) => {
     cookie = createCookieHeader(token)
 
-    const response = await api.get(`/api/v1/captcha/refresh`,
+    const response = await axios.get(`/api/v1/captcha/refresh`,
         {
             headers: cookie,
         }
@@ -204,7 +200,7 @@ export const RefreshCaptcha = async (token) => {
 export const GetCaptchaImage = async (token) => {
     cookie = createCookieHeader(token)
 
-    const response = await api.get(`/api/v1/get/image`, 
+    const response = await axios.get(`/api/v1/get/image`, 
         {
             headers: cookie,
         }
@@ -216,7 +212,7 @@ export const GetCaptchaImage = async (token) => {
 export const GetCaptchaData = async (token) => {
     cookie = createCookieHeader(token)
 
-    const response = await api.get(`/api/v1/get/data`,
+    const response = await axios.get(`/api/v1/get/data`,
         {
             headers: cookie,
         }
@@ -238,7 +234,7 @@ export const GetProductList = async (catalog, category, product_id, token) => {
 
     const header = createCookieHeader(token)
 
-    const response = await api.get(`/api/v1/product/get/list`,
+    const response = await axios.get(`/api/v1/product/get/list`,
     {
     params: params,
     headers: header,
@@ -250,7 +246,7 @@ export const GetProductList = async (catalog, category, product_id, token) => {
 export const GetProductData = async (token, product_id) => {
     const header = createCookieHeader(token);
 
-    const response = await api.get(`/api/v1/product/${product_id}/get`, 
+    const response = await axios.get(`/api/v1/product/${product_id}/get`, 
     {
         headers: header,
     })
@@ -296,7 +292,7 @@ export const ChangeProductInfo = async (usd = null, usdt = null, btc = null, eur
         internationalDelivery: internationalDelivery,
         expressDelivery: expressDelivery
     };
-    const response = await api.post(`/api/v1/admin/product/info/add`, data);
+    const response = await axios.post(`/api/v1/admin/product/info/add`, data);
 
     return JSON.parse(response.data);
 };
@@ -339,13 +335,13 @@ export const CreateNewProduct = async (usd = null, usdt = null, btc = null, euro
         internationalDelivery: internationalDelivery,
         expressDelivery: expressDelivery
     };
-    const response = await api.post(`/api/v1/admin/product/new`, data);
+    const response = await axios.post(`/api/v1/admin/product/new`, data);
 
     return JSON.parse(response.data);
 };
 
 export const GetProductFile = async (product_id, file_id) => {
-    const response = await api.get(`/api/v1/product/${product_id}/${file_id}/get`);
+    const response = await axios.get(`/api/v1/product/${product_id}/${file_id}/get`);
 
     return JSON.parse(response.data);
 };
@@ -355,7 +351,7 @@ export const AdminFileUpload_Product = async (product_id, file) => {
     formData.append('product_id', product_id);
     formData.append('file', file);
   
-    const response = await api.post('/api/v1/admin/files/upload',
+    const response = await axios.post('/api/v1/admin/files/upload',
         formData,
     {
         headers:
@@ -371,13 +367,13 @@ export const GetProductCategories = async (catalog) => {
     const data = {
         catalog: catalog,
     };
-    const response = await api.get(`/api/v1/categories/get`, data);
+    const response = await axios.get(`/api/v1/categories/get`, data);
 
     return JSON.parse(response.data);
 };
 
 export const GetCatalogsWithCategories = async () => {
-    const response = await api.get(`/api/v1/catalog/get`);
+    const response = await axios.get(`/api/v1/catalog/get`);
 
     return JSON.parse(response.data);
 };
@@ -386,23 +382,18 @@ export const GetCatalogsWithCategories = async () => {
 
 
 //Authenticate
-export const AuthAccReq = async (captchaData, email, password, token) => {
-    const cookie = createCookieHeader(token);
+export const AuthAccReq = async (captchaData, email, password) => {
+    const token = tokenReq();
     const requestBody = 
     {
-    captcha_data: captchaData,
-    mail: email,
-    password: password
+        captcha_data: captchaData,
+        mail: email,
+        password: password
     };
       
-    const response = await api.post('/api/v1/auth/register',
+    const response = await axios.post('/api/v1/auth/register',
         requestBody,
-        {
-            headers:
-            {
-                cookie,
-            }
-        }
+        token,
     );
 
     return JSON.parse(response.data);
@@ -416,7 +407,7 @@ export const RegisterAccount = async (email, password, captcha, token) => {
         captcha: captcha
     };
   
-    const response = await api.post('/api/v1/account/register', requestBody, {
+    const response = await axios.post('/api/v1/account/register', requestBody, {
         headers:
         {
           'Content-Type': 'application/json',
@@ -432,7 +423,7 @@ export const RegisterAccount = async (email, password, captcha, token) => {
 export const GetFavProducts = async (token) => {
     const cookie = createCookieHeader(token);
 
-    const response = await api.post('/api/v1/favorites/get',
+    const response = await axios.post('/api/v1/favorites/get',
         {
             headers: cookie,
         }
@@ -447,7 +438,7 @@ export const DeleteFavProducts = async (product_id, token) => {
     }
     const cookie = createCookieHeader(token);
 
-    const response = await api.delete("/api/v1/favorites/delete", 
+    const response = await axios.delete("/api/v1/favorites/delete", 
         data,
         {
             headers: {
@@ -468,7 +459,7 @@ export const AddFavProduct = async (product_id, token) => {
     }
     const cookie = createCookieHeader(token);
 
-    const response = await api.post("/api/v1/favorites/add", 
+    const response = await axios.post("/api/v1/favorites/add", 
         data,
         {
             headers: {

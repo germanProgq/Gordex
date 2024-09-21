@@ -1,9 +1,6 @@
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
-import ProductCard from "../../components/ProductCard/ProductCard.jsx";
-import { useEffect } from 'react';
-import { CreateCaptcha, CreateToken } from '../../apiService.js';
-    
+import ProductCard from "../../components/ProductCard/ProductCard.jsx";  
 import 'swiper/css';
 import style from "./styles/style.module.css";
 import * as img from './styles/img.js'
@@ -12,30 +9,6 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import { FreeMode } from 'swiper/modules';
 
 function Root() {
-    useEffect(() => {
-        const fetchToken = async () => {
-            try {
-                await CreateToken();
-            } catch (error) {
-                console.error("Error fetching token:", error);
-            }
-        };
-
-        const request_captcha = async() => {
-            try {
-                const captcha_html = await CreateCaptcha();
-                console.log(captcha_html)
-                return captcha_html                
-            } catch(error) {
-                console.error("Error creating captcha:", error);
-            }
-        }
-        fetchToken()
-        request_captcha()
-
-
-    }, []);
-
     return (
         <>
             <Navbar/>

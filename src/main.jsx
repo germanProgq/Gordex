@@ -45,8 +45,8 @@ import MobileApps from './routes/MobileApps/MobileApps'
 import PaymentFiat from './routes/PaymentFiat/PaymentFiat'
 import PaymentBasket from './routes/PaymentBasket/PaymentBasket'
 import Error404 from './routes/404/Error404'
-import { useEffect } from 'react'
-import { CreateToken } from './apiService'
+
+import { UserProvider } from './token/provider'
 
 
 
@@ -229,6 +229,8 @@ const theme = createTheme({
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
-        <RouterProvider router={router}/>
+        <UserProvider>
+            <RouterProvider router={router}/>
+        </UserProvider>
     </ThemeProvider>
 )

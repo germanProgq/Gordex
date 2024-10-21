@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Accordion, AccordionActions, AccordionSummary, Button, SwipeableDrawer } from '@mui/material';
 import { SearchProducts } from "../../token/api.js";
+import NavBarSearch from "./searchBar.jsx";
 
 const ELECTRONIC_LIST = [
     "Phones",
@@ -33,20 +34,6 @@ function Navbar() {
     const [searchWord, setSearchWord] = useState('');
 
     const toggleDrawer = () => setDrawerOpened(!drawerOpened);
-
-    const handleSearchInput = (event) => {
-        const search_word = event.target.value;
-        setSearchWord(search_word);
-        handleFindSearch()
-        
-    };
-
-    const handleFindSearch = async() => {
-        const result = await SearchProducts(searchWord)
-        
-    }
-
-
     return (
         <nav className="header">
             <div className="container header__container">
@@ -253,13 +240,7 @@ function Navbar() {
                                 </div>
                             </div>
                         </div>
-                        <form className="nav__searchbar">
-                            <div className="nav__input-box">
-                                <img src={img.searchIcon} className="nav__input-icon"></img>
-                                <input className="nav__input" placeholder="Search by brand, name, etc." type="text" onChange={handleSearchInput}></input>
-                            </div>
-                            <button className="nav__input-submit" type="submit" onClick={handleFindSearch}>Search</button>
-                        </form>
+                        <NavBarSearch/>
                     </nav>
                     <div className="header__right">
                         <div className="header__btns">

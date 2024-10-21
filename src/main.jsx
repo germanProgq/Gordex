@@ -45,6 +45,7 @@ import MobileApps from './routes/MobileApps/MobileApps'
 import PaymentFiat from './routes/PaymentFiat/PaymentFiat'
 import PaymentBasket from './routes/PaymentBasket/PaymentBasket'
 import Error404 from './routes/404/Error404'
+import SearchResults from './components/Navbar/searchResults'
 
 import { UserProvider } from './token/provider'
 
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Root/>
+    },
+    {
+        path: "/search",
+        element: <SearchResults/>,
     },
     {
         path: "/catalog",
@@ -128,7 +133,7 @@ const router = createBrowserRouter([
             {
                 path: "/admin/payment",
                 element: <PaymentPage/>
-            },
+            },            
             {
                 path: "/admin/users",
                 element: <></>
@@ -218,7 +223,7 @@ const router = createBrowserRouter([
     {
         path: "/not-found",
         element: <Error404/>
-    }
+    },
 ])
 
 const theme = createTheme({

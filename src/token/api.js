@@ -185,37 +185,28 @@ export const CreateCaptcha = async () => {
     }
   };
 
-export const RefreshCaptcha = async (token) => {
-    cookie = createCookieHeader(token)
+export const RefreshCaptcha = async () => {
+    const cookie = tokenReq()
 
-    const response = await axios.get(`/api/v1/captcha/refresh`,
-        {
-            headers: cookie,
-        }
+    const response = await axios.get(`/api/v1/captcha/refresh`, cookie
     );
 
     return JSON.parse(response.data);
 };
 
-export const GetCaptchaImage = async (token) => {
-    cookie = createCookieHeader(token)
+export const GetCaptchaImage = async () => {
+    const cookie = tokenReq()
 
-    const response = await axios.get(`/api/v1/get/image`, 
-        {
-            headers: cookie,
-        }
+    const response = await axios.get(`/api/v1/get/image`, cookie
     );
 
     return JSON.parse(response.data);
 };
 
-export const GetCaptchaData = async (token) => {
-    cookie = createCookieHeader(token)
+export const GetCaptchaData = async () => {
+    const cookie = tokenReq()
 
-    const response = await axios.get(`/api/v1/get/data`,
-        {
-            headers: cookie,
-        }
+    const response = await axios.get(`/api/v1/get/data`, cookie
     );
 
     return JSON.parse(response.data);
@@ -223,33 +214,29 @@ export const GetCaptchaData = async (token) => {
 
 
 //Product
-export const GetProductList = async (catalog, category, product_id, token) => {
+export const GetProductList = async (catalog, category, product_id) => {
     const params =
     {
     catalog: catalog || null,
     category: category || null,
     product_id: product_id || null,
-    token: token,
     }
 
-    const header = createCookieHeader(token)
+    const header = tokenReq()
 
     const response = await axios.get(`/api/v1/product/get/list`,
     {
     params: params,
-    headers: header,
+    header,
     })
 
     return JSON.parse(response.data);
 };
 
-export const GetProductData = async (token, product_id) => {
-    const header = createCookieHeader(token);
+export const GetProductData = async (product_id) => {
+    const header = tokenReq()
 
-    const response = await axios.get(`/api/v1/product/${product_id}/get`, 
-    {
-        headers: header,
-    })
+    const response = await axios.get(`/api/v1/product/${product_id}/get`, header);
 
     return JSON.parse(response.data);
 };

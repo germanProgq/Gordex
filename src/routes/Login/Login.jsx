@@ -6,7 +6,7 @@ import * as img from "./styles/img.js"
 import "./styles/style.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { AuthAccReq, CreateCaptcha, RegisterAccount } from "../../token/api.js";
+import { AuthAccReq, CreateCaptcha, GetCaptchaImage, RegisterAccount } from "../../token/api.js";
 
 function Login() {
     const [loginForm, setLoginForm] = useState("signUp");
@@ -18,7 +18,7 @@ function Login() {
     const navigate = useNavigate();
 
     const HandleCaptchaImgReq = async() => {
-        const captcha_img = await CreateCaptcha()
+        const captcha_img = await GetCaptchaImage()
         return captcha_img
     };
 
@@ -32,19 +32,24 @@ function Login() {
         }, 45000);
     };
 
+    const getCaptchaInfo = () => {
+        const input_captcha = document.getElementById('captcha-input');
+        const captcha_sumbit = input_captcha.value;
+        if (captcha_sumbit) {
+            RegisterAccount(email, password, captcha_sumbit);
+            AuthAccReq(email, password, captcha_sumbit);
+        } 
+
+    }
+
 
     const SubmitForm = () => {
-
         if (loginForm === 'signUp') {
             if (repeatPass != password) {
                 console.error("Passwords do not match")
             }
             else {
-                handleCaptcha();
-                if (captcha) /*Set captcha params*/ {
-                    RegisterAccount(email, password, captcha);
-                    AuthAccReq(email, password, captcha);
-                }            
+                handleCaptcha();           
             }
 
             
@@ -52,9 +57,6 @@ function Login() {
         }
         else if (loginForm === "signIn"){
             handleCaptcha();
-            if (captcha) /*Set captcha params*/ {
-                AuthAccReq(email, password, captcha);
-            }  
         }
     }
     const captchaContainerStyle = {
@@ -69,6 +71,18 @@ function Login() {
     const captchaImageStyle = {
         width: '100%',
         height: 'auto',
+    };
+
+    const captchaInputStyle = {
+        border: '1px solid yellow',
+        fontSize: '13px',
+        height: '20%'
+    };
+    const captchaButtonSubmitStyle = {
+        border: '1px solid yellow',
+        background: 'yellow',
+        fontSize: '13px',
+        height: '20%'
     };
     
     return (
@@ -272,6 +286,8 @@ function Login() {
                 {captchaImageUrl && (
                     <div className="captcha-container" style={captchaContainerStyle}>
                         <img src={captchaImageUrl} alt="Captcha" style={captchaImageStyle} />
+                        <input placeholder="Enter the symbols from Captcha" style={captchaInputStyle} id="captcha-input" onSubmit={getCaptchaInfo}></input>
+                        <button type="submit" style={captchaButtonSubmitStyle}>Submit</button>
                     </div>
                 )}
             </Container>

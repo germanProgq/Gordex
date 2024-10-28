@@ -5,8 +5,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
-import ProductCard from '../../../components/ProductCard/ProductCard';
-import style from '../styles/style.module.css';
+import ProductItem from '../ProductSeperate';
+import '../styles/styleMobile.css'
+import '../styles/styleDesktop.css'
 
 const groupProducts = (products, groupSize) => {
   const groups = [];
@@ -30,8 +31,8 @@ const SearchResults = () => {
         try {
           setLoading(true);
           const data = await SearchProducts(query);
-          console.log(data);
-          setResults(data);
+
+          setResults(Array.isArray(data) ? data : data.products || []);
         } catch (err) {
           setError('Failed to fetch search results');
         } finally {
@@ -46,7 +47,6 @@ const SearchResults = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-  // Group results into arrays of 5 products each
   const groupedResults = groupProducts(results, 5);
 
   return (
@@ -57,7 +57,16 @@ const SearchResults = () => {
             <Swiper modules={[FreeMode]} slidesPerView={'auto'} spaceBetween={10} freeMode={true}>
               {group.map((product) => (
                 <SwiperSlide key={product.id} style={{ width: 'auto' }}>
-                  <ProductCard product={product} />
+                  <ProductItem
+                    name={product.name}
+                    price={product.price}
+                    images={{ main: product.mainImage, others: product.otherImages }}
+                    description={product.description}
+                    shipping={product.shipping}
+                    brand={product.brand}
+                    config={product.config}
+                    colors={product.colors}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>

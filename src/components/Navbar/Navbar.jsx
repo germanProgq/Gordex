@@ -3,7 +3,6 @@ import * as img from "./styles/img.js"
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Accordion, AccordionActions, AccordionSummary, Button, SwipeableDrawer } from '@mui/material';
-import { SearchProducts } from "../../token/api.js";
 import NavBarSearch from "./searchBar.jsx";
 
 const ELECTRONIC_LIST = [

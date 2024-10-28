@@ -45,7 +45,7 @@ import MobileApps from './routes/MobileApps/MobileApps'
 import PaymentFiat from './routes/PaymentFiat/PaymentFiat'
 import PaymentBasket from './routes/PaymentBasket/PaymentBasket'
 import Error404 from './routes/404/Error404'
-import SearchResults from './components/Navbar/searchResults'
+import SearchResults from './routes/Product/search/searchResults'
 
 import { UserProvider } from './token/provider'
 

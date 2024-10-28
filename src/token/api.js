@@ -1,8 +1,7 @@
-import { CategorySharp, Cookie } from '@mui/icons-material';
 import axios from  'axios'
 import Cookies from  'js-cookie'
 
-//Used Functions
+//Used Functions (All done)
 const api = axios.create({
     baseURL: "http://185.174.136.47:8080",
 });

@@ -1,9 +1,10 @@
 import "./styles/styles.css"
 import * as img from "./styles/img.js"
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Accordion, AccordionActions, AccordionSummary, Button, SwipeableDrawer } from '@mui/material';
 import NavBarSearch from "./searchBar.jsx";
+import { UserContext } from "../../token/provider.jsx";
 
 const ELECTRONIC_LIST = [
     "Phones",
@@ -28,9 +29,19 @@ const CLOTHING_LIST = [
     "Socks",
 ]
 
+const handleClick = () => {
+    if (username) {
+        history.push("/profile"); // Navigate to profile if logged in
+    } else {
+        history.push("/login"); // Navigate to login if not logged in
+    }
+};
+
 function Navbar() {
     const [drawerOpened, setDrawerOpened] = useState(false);
     const [searchWord, setSearchWord] = useState('');
+    const {username} = useContext(UserContext)
+
 
     const toggleDrawer = () => setDrawerOpened(!drawerOpened);
     return (
@@ -97,8 +108,8 @@ function Navbar() {
                             <Button>
                                 Favorites
                             </Button>
-                            <Button>
-                                Login
+                            <Button onClick={handleClick}>
+                                {username || "Login"}
                             </Button>
                             <Button>
                                 Feedback
@@ -312,9 +323,9 @@ function Navbar() {
                                 <img src={img.bagIcon} alt="" className="header__btn-icon--mobile"></img>
                             </div>
                         </div>
-                        <Link to="/login" className="header__login">
-                            Login
-                            <img src={img.userSquare} alt="" className="header__login-icon"></img>
+                        <Link to={username ? "/profile" : "/login"} className="header__login">
+                            {username || 'Login'} {/* Display username or 'Login' if not logged in */}
+                            <img src={img.userSquare} alt="" className="header__login-icon" />
                         </Link>
                         <Link to="/login" className="header__login-mobile">
                             <img src={img.loginIcon} alt="" className="header__login-icon--mobile"></img>

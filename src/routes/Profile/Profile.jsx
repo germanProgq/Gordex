@@ -58,79 +58,79 @@ function Profile() {
                     <h2 className="profile__title">Order history</h2>
                     <div className="profile__history-main">
                       {/* <p className="profile__history-alert">You have no orders</p> */}
-                      <div class="profile__history-top">
-                        <div class="profile__history-imgs">
-                          <div class="profile__history-img-box">
-                            <img src="/images/profile/sneakers-mini.png" alt="" class="profile__history-img" />
+                      <div className="profile__history-top">
+                        <div className="profile__history-imgs">
+                          <div className="profile__history-img-box">
+                            <img src="/images/profile/sneakers-mini.png" alt="" className="profile__history-img" />
                           </div>
-                          <div class="profile__history-img-box">
-                            <img src="/images/profile/iphone-mini.png" alt="" class="profile__history-img" />
-                            <div class="profile__history-img-overlay">+4</div>
+                          <div className="profile__history-img-box">
+                            <img src="/images/profile/iphone-mini.png" alt="" className="profile__history-img" />
+                            <div className="profile__history-img-overlay">+4</div>
                           </div>
                         </div>
-                        <div class="profile__history-info">
-                          <p class="profile__history-text">
-                            <img src="/images/profile/note.svg" alt="" class="profile__history-text-icon" />
+                        <div className="profile__history-info">
+                          <p className="profile__history-text">
+                            <img src="/images/profile/note.svg" alt="" className="profile__history-text-icon" />
                             Order created :
-                            <span class="profile__history-date">14.02.2023</span>
+                            <span className="profile__history-date">14.02.2023</span>
                           </p>
-                          <p class="profile__history-text">
-                            <img src="/images/profile/dollar-square.svg" alt="" class="profile__history-text-icon" />
+                          <p className="profile__history-text">
+                            <img src="/images/profile/dollar-square.svg" alt="" className="profile__history-text-icon" />
                             Payment :
-                            <span class="profile__history-span">
-                              <img src="/images/profile/doge.svg" alt="" class="profile__history-currency" />
-                              <span class="profile__history-span">28,3155</span>
-                              <span class="profile__history-span profile__history-span--small">≈</span>
-                              <span class="profile__history-span">$1,342</span>
+                            <span className="profile__history-span">
+                              <img src="/images/profile/doge.svg" alt="" className="profile__history-currency" />
+                              <span className="profile__history-span">28,3155</span>
+                              <span className="profile__history-span profile__history-span--small">≈</span>
+                              <span className="profile__history-span">$1,342</span>
                             </span>
                           </p>
-                          <p class="profile__history-text">
-                            <img src="/images/profile/3d-square.svg" alt="" class="profile__history-text-icon" />
+                          <p className="profile__history-text">
+                            <img src="/images/profile/3d-square.svg" alt="" className="profile__history-text-icon" />
                             Shipping information
                           </p>
-                          <ul class="profile__history-list">
-                            <li class="profile__history-list-item">
-                              <div class="profile__history-list-marker"></div>
+                          <ul className="profile__history-list">
+                            <li className="profile__history-list-item">
+                              <div className="profile__history-list-marker"></div>
                               Ivan Ivanov
                             </li>
-                            <li class="profile__history-list-item">
-                              <div class="profile__history-list-marker"></div>
+                            <li className="profile__history-list-item">
+                              <div className="profile__history-list-marker"></div>
                               Alte Mainzer G. 61, 60311 Frankfurt am Main
                             </li>
-                            <li class="profile__history-list-item">
-                              <div class="profile__history-list-marker"></div>
+                            <li className="profile__history-list-item">
+                              <div className="profile__history-list-marker"></div>
                               +4915256443386
                             </li>
-                            <li class="profile__history-list-item">
-                              <div class="profile__history-list-marker"></div>
+                            <li className="profile__history-list-item">
+                              <div className="profile__history-list-marker"></div>
                               mailgroupalfa410204@gmail.com
                             </li>
                           </ul>
                         </div>
                       </div>
-                      <div class="profile__history-divider"></div>
-                      <div class="profile__history-bottom">
-                        <p class="profile__history-status-text">Status:</p>
-                        <div class="profile__history-status">
-                          <p class="profile__history-order">
-                            <span class="profile__history-order-text">
-                              <span class="profile__history-order-icon"><img src="/images/profile/timer.svg"
-                              alt="" class="" /></span>
+                      <div className="profile__history-divider"></div>
+                      <div className="profile__history-bottom">
+                        <p className="profile__history-status-text">Status:</p>
+                        <div className="profile__history-status">
+                          <p className="profile__history-order">
+                            <span className="profile__history-order-text">
+                              <span className="profile__history-order-icon"><img src="/images/profile/timer.svg"
+                              alt="" className="" /></span>
                               Order processing
                             </span>
                             9:22 14.02.2023
                           </p>
-                          <p class="profile__history-descr">
+                          <p className="profile__history-descr">
                             Sorting, packing and preparing for shipment
                           </p>
-                          <a href="#" class="profile__history-btn">
-                            <img src="/images/profile/chevron-light2.svg" alt="" class="profile__history-btn-icon" />
+                          <a href="#" className="profile__history-btn">
+                            <img src="/images/profile/chevron-light2.svg" alt="" className="profile__history-btn-icon" />
                             View shipping history
                           </a>
-                          <p class="profile__history-delivery">
-                            <img src="/images/profile/truck.svg" alt="" class="profile__history-delivery-icon" />
+                          <p className="profile__history-delivery">
+                            <img src="/images/profile/truck.svg" alt="" className="profile__history-delivery-icon" />
                             Delivery date :
-                            <span class="profile__history-delivery-span">
+                            <span className="profile__history-delivery-span">
                               February 21 - 24
                             </span>
                           </p>

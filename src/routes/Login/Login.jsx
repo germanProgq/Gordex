@@ -4,85 +4,114 @@ import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import * as img from "./styles/img.js"
 import "./styles/style.css"
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
-import { AuthAccReq, CreateCaptcha, GetCaptchaImage, RegisterAccount } from "../../token/api.js";
+import { AuthAccReq, CreateCaptcha, GetCaptchaData, GetCaptchaImageUrl  , RegisterAccount } from "../../token/api.js";
+import './captcha.css'
+import { UserContext } from "../../token/provider.jsx";
 
 function Login() {
     const [loginForm, setLoginForm] = useState("signUp");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState('');
     const [repeatPass, setRepeatPass] = useState('');
-    const [captcha, setCaptcha] = useState("");
-    const [captchaImageUrl, setCaptchaImageUrl] = useState('');
     const navigate = useNavigate();
+    const { username, setUsername } = useContext(UserContext);
+    const captcha = document.getElementById('captcha-container');
+    const inputElement = document.getElementById('captcha-input');
+    const [captchaData, setCaptchaData] = useState('');
 
-    const HandleCaptchaImgReq = async() => {
-        const captcha_img = await GetCaptchaImage()
-        return captcha_img
+    useEffect(() => {
+        if (username) {
+          navigate('/');
+        }
+      }, [username, navigate, setUsername]);
+      
+    const handleHideCaptcha = (e) => {
+
+        if (!captcha.contains(e.target)) {
+
+            captcha.classList.add('invisible-captcha');
+            inputElement.value = ''
+    
+            // Remove the event listener to prevent further clicks from affecting it
+            document.removeEventListener('click', handleHideCaptcha);
+        }
     };
 
-    const handleCaptcha = async () => {
-        const captcha_img = await HandleCaptchaImgReq();
-        setCaptchaImageUrl(captcha_img);
+    const handleSubmitCaptcha = async (captchaData, email, password) => {
+        captcha.classList.add('invisible-captcha');    
+        document.removeEventListener('click', handleHideCaptcha);
+        const captchaId = captchaData.id;
+        const input = inputElement.value.toString();
+        inputElement.value = ''
 
-        setTimeout(async () => {
-            const refreshedCaptchaImg = await RefreshCaptcha();
-            setCaptchaImageUrl(refreshedCaptchaImg);
-        }, 45000);
-    };
-
-    const getCaptchaInfo = () => {
-        const input_captcha = document.getElementById('captcha-input');
-        const captcha_sumbit = input_captcha.value;
-        if (captcha_sumbit) {
-            RegisterAccount(email, password, captcha_sumbit);
-            AuthAccReq(email, password, captcha_sumbit);
-        } 
-
+        if (loginForm == 'signIn') {
+            const registerAccStatus = await AuthAccReq(captchaId, email, password, input);
+            if (registerAccStatus == 200) {
+                setUsername(email)
+                navigate('/')
+            }
+        }
+        else if (loginForm == 'signUp') {
+            const registerAccStatus = await RegisterAccount(captchaId, email, password);
+            if (registerAccStatus == 200) {
+                setUsername(email)
+                navigate('/')
+            }
+            
+        }
     }
+    
 
-
+    
     const SubmitForm = () => {
+        if (!email || !password) {
+            return;
+        }
+
         if (loginForm === 'signUp') {
             if (repeatPass != password) {
                 console.error("Passwords do not match")
             }
             else {
-                handleCaptcha();           
+                handleCaptcha();                 
             }
 
             
 
         }
         else if (loginForm === "signIn"){
-            handleCaptcha();
+                handleCaptcha();
         }
     }
-    const captchaContainerStyle = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '80%',
-        zIndex: 1000,
-    };
 
-    const captchaImageStyle = {
-        width: '100%',
-        height: 'auto',
-    };
+    const handleCaptcha = async () => {
+        try {
+            await CreateCaptcha();
 
-    const captchaInputStyle = {
-        border: '1px solid yellow',
-        fontSize: '13px',
-        height: '20%'
-    };
-    const captchaButtonSubmitStyle = {
-        border: '1px solid yellow',
-        background: 'yellow',
-        fontSize: '13px',
-        height: '20%'
+            const url = await GetCaptchaImageUrl()
+
+            const img = new Image();
+            img.src = url;
+            const captchaImgPrev = document.getElementsByClassName('captcha-image')
+            Array.from(captchaImgPrev).forEach((img) => {
+                img.remove();
+            })
+            img.classList.add('captcha-image')
+
+            captcha.classList.remove('invisible-captcha')
+            captcha.classList.add('captcha-container')
+            captcha.appendChild(img)
+            
+
+            document.addEventListener('click', handleHideCaptcha);      
+            const captchaData = await GetCaptchaData()
+            setCaptchaData(captchaData)
+            
+        } catch (error) {
+            console.error('Error handling captcha:', error);
+        }
     };
     
     return (
@@ -283,14 +312,21 @@ function Login() {
                 className="main-content__buttons"
                 variant="text" 
                 color="inherit">Restore password</Button>
-                {captchaImageUrl && (
-                    <div className="captcha-container" style={captchaContainerStyle}>
-                        <img src={captchaImageUrl} alt="Captcha" style={captchaImageStyle} />
-                        <input placeholder="Enter the symbols from Captcha" style={captchaInputStyle} id="captcha-input" onSubmit={getCaptchaInfo}></input>
-                        <button type="submit" style={captchaButtonSubmitStyle}>Submit</button>
-                    </div>
-                )}
             </Container>
+            <div id="captcha-container" className="invisible-captcha">
+                <input 
+                    type="text" 
+                    placeholder="Enter Captcha" 
+                    className="captcha-input"
+                    id="captcha-input"
+                />
+                <button 
+                    className="captcha-button"
+                    onClick={() => handleSubmitCaptcha(captchaData, email, password)}
+                >
+                    Submit
+                </button>
+            </div>
         </>
     )
 }

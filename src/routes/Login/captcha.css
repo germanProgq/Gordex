@@ -1,0 +1,63 @@
+/* CaptchaStyles.css */
+
+.captcha-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 50%;
+    z-index: 1000;
+    gap: 10px; /* Adds space between child elements */
+    background-color: black; /* Optional: if you want a black background */
+    padding: 20px;
+    border-radius: 10px;
+    visibility: visible;
+    transition: 1s;
+}
+.invisible-captcha {
+    visibility: hidden;
+    z-index: -1000;
+    transform: translateY(-100vw);
+}
+
+.captcha-image {
+    width: 100%;
+    height: auto;
+    max-height: 60%; /* Limit image height */
+    object-fit: contain; /* Ensure image fits within container */
+    margin-bottom: 10px;
+}
+
+.captcha-input {
+    border: 1px solid black;
+    font-size: 13px;
+    width: 100%; /* Make input full width of container */
+    height: auto;
+    border-radius: 20px;
+    background-color: yellow;
+    margin: 0;
+    padding: 5px;
+    text-align: center; /* Center text in input */
+    outline: none; /* Remove default focus outline */
+}
+
+.captcha-button {
+    border: 1px solid black; /* Changed to black for better contrast */
+    background: #F6D456;
+    font-size: 13px;
+    width: 100%; /* Make button full width */
+    height: 40px; /* Fixed height instead of percentage */
+    border-radius: 20px; /* Match input style */
+    cursor: pointer; /* Show pointer on hover */
+    transition: background-color 0.3s ease, transform 1s /* Smooth transition for hover effects */
+}
+
+.captcha-button:hover {
+    background-color: #FFD700; /* Slightly different yellow on hover */
+    transform: translateY(-3px);
+}

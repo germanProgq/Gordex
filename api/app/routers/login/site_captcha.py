@@ -1,6 +1,7 @@
 import string, random
 import base64
 
+
 from captcha.image import ImageCaptcha
 from fastapi import APIRouter, Response, Request, Depends
 from app.models.default import CaptchaData

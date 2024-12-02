@@ -4,7 +4,10 @@ from peewee import *
 from pathlib import Path
 from PIL import Image
 # Define the absolute path to your project folder
-PROJECT_FOLDER = Path('C:/Users/gvino/OneDrive/Documents/GitHub/api')  # Change this to your actual project path
+from pathlib import Path
+
+# Get the current file's directory and then the parent directory
+PROJECT_FOLDER = Path(__file__).resolve().parent.parent.parent # Adjust the number of .parent as needed
 
 
 
@@ -380,15 +383,20 @@ class FileActions:
         file_paths = [_.data for _ in FilesData.select(FilesData.data).where(FilesData.product == self.product_id)]
         responses = []  # Initialize an empty list to hold all responses
         for path in file_paths:
+            print(f"Trying to load file: {path}")  # Debug statement
             img = load_file(path)
-            img.seek(0)
-            image_data = img.read()
-            baseencode = base64.b64encode(image_data).decode('utf-8')
-            response = {
-                'image': baseencode,
-                'filename': path
-            }
-            responses.append(response)  # Append each response to the list
+            if img is not None:
+                img.seek(0)
+                image_data = img.read()
+                baseencode = base64.b64encode(image_data).decode('utf-8')
+                response = {
+                    'image': baseencode,
+                    'filename': path
+                }
+                responses.append(response)  # Append each response to the list
+            else:
+                print(f"File not found: {path}")  # Debug statement
+                responses.append({'error': 'File not found'})  # Append an error response if the file
         return json.dumps(responses)  # Return the list of responses as JSON
     
     def get_file_data_by_request(self) -> bytes or None:

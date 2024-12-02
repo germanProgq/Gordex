@@ -7,3 +7,5 @@ pydantic==2.7.3
 Requests==2.32.3
 slowapi==0.1.9
 starlette==0.37.2
+pillow
+captcha
